@@ -8,7 +8,7 @@ const JokeItem = props => {
     <div className="joke">
       <div className="joke__left-side">
         <div className="joke__image">
-          <img src={icon} />
+          <img src={icon} alt='' />
         </div>
         <div className="joke__category">{category && <div>category: {category[0]}</div>}</div>
         <div className="joke_url">
@@ -20,9 +20,7 @@ const JokeItem = props => {
         </div>
       </div>
       <div className="joke__right-side">
-        <div className="joke__value">
-          {value}
-        </div>
+        <div className="joke__value">{value}</div>
       </div>
     </div>
   );

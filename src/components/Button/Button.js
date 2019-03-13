@@ -7,7 +7,7 @@ const Button = props => {
     <button className={`button ${props.disabled ? 'button--disabled' : ''}`} onClick={props.onClick}>
       {props.children}
     </button>
-  )
-}
+  );
+};
 
-export default Button
+export default Button;

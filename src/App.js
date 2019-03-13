@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import Button from './components/Button/Button';
 import Header from './components/Header/Header';
 import GetSearchedJokeRow from './components/GetSearchedJokeRow';
 import JokeList from './components/JokeList/JokeList';
@@ -60,24 +58,23 @@ class App extends Component {
   }
 
   render() {
-    const { categories } = this.state;
-    console.log(categories);
+    const { categories, selectedCategory, searchTerm, totalJokes, jokes } = this.state;
     return (
       <div className="App">
         <Header />
         <GetRandomJokeRow
           getRandomJoke={this.getRandomJoke}
-          categories={this.state.categories}
-          selectedCategory={this.state.selectedCategory}
+          categories={categories}
+          selectedCategory={selectedCategory}
           handleCategoryChange={this.handleCategoryChange}
         />
         <GetSearchedJokeRow
-          value={this.state.searchTerm}
+          value={searchTerm}
           handleSearchTermChange={this.handleSearchTermChange}
           getSearchedJokes={this.getSearchedJokes}
         />
 
-        <JokeList totalJokes={this.state.totalJokes} jokes={this.state.jokes} />
+        <JokeList totalJokes={totalJokes} jokes={jokes} />
       </div>
     );
   }
