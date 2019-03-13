@@ -1,12 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense } from 'react';
 import Header from './components/Header/Header';
 import GetSearchedJokeRow from './components/GetSearchedJokeRow';
-import JokeList from './components/JokeList/JokeList';
+// import JokeList from './components/JokeList/JokeList';
+
 import GetRandomJokeRow from './components/GetRandomJokeRow';
 
 import * as jokeApi from './api/jokeApi';
 
 import './App.scss';
+const JokeList = React.lazy(() => import('./components/JokeList/JokeList'));
 
 class App extends Component {
   constructor(props) {
@@ -73,8 +75,9 @@ class App extends Component {
           handleSearchTermChange={this.handleSearchTermChange}
           getSearchedJokes={this.getSearchedJokes}
         />
-
-        <JokeList totalJokes={totalJokes} jokes={jokes} />
+        <Suspense fallback={<div>Chuck Norris is coming...</div>}>
+          <JokeList totalJokes={totalJokes} jokes={jokes} />
+        </Suspense>
       </div>
     );
   }

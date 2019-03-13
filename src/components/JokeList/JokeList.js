@@ -7,7 +7,7 @@ import './JokeList.scss';
 const JokeList = props => {
   return (
     <div className="joke-list">
-      {props.jokes.length === 0 && <div>Sorry, no jokes found!</div>}
+      {props.jokes.length === 0 &&  props.totalJokes === 0 && <div>Sorry, no jokes found!</div>}
       {!!props.totalJokes && <div>Total jokes found: {props.totalJokes}</div>}
       {props.jokes.map(joke => (
         <Joke icon={joke.icon_url} key={joke.id} category={joke.category} url={joke.url} value={joke.value} />
