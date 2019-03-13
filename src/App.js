@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Button from './components/Button';
-import Header from './components/Header';
-import SearchBar from './components/SearchBar';
-import JokeList from './components/JokeList';
+import Button from './components/Button/Button';
+import Header from './components/Header/Header';
+import GetSearchedJokeRow from './components/GetSearchedJokeRow';
+import JokeList from './components/JokeList/JokeList';
 import GetRandomJokeRow from './components/GetRandomJokeRow';
 
 import * as jokeApi from './api/jokeApi';
 
-import './App.css';
+import './App.scss';
 
 class App extends Component {
   constructor(props) {
@@ -38,7 +38,7 @@ class App extends Component {
     const { selectedCategory } = this.state;
     const randomJoke = await jokeApi.fetchRandomJoke(selectedCategory);
 
-    this.setState({ jokes: [ randomJoke ] });
+    this.setState({ jokes: [ randomJoke ], totalJokes: 0 });
   }
 
   async getSearchedJokes() {
@@ -71,15 +71,12 @@ class App extends Component {
           selectedCategory={this.state.selectedCategory}
           handleCategoryChange={this.handleCategoryChange}
         />
+        <GetSearchedJokeRow
+          value={this.state.searchTerm}
+          handleSearchTermChange={this.handleSearchTermChange}
+          getSearchedJokes={this.getSearchedJokes}
+        />
 
-        <div>
-          or search:
-          <SearchBar
-            value={this.state.searchTerm}
-            handleSearchTermChange={this.handleSearchTermChange}
-            getSearchedJokes={this.getSearchedJokes}
-          />
-        </div>
         <JokeList totalJokes={this.state.totalJokes} jokes={this.state.jokes} />
       </div>
     );

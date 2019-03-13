@@ -1,0 +1,26 @@
+@import "./vars.scss";
+
+body {
+  margin: 0;
+  padding: 0;
+
+  font-family: $normal-font;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 18px;
+  box-sizing: border-box;
+  
+}
+
+.App {
+  text-align: center;
+}
+
+select, select option, input {
+  text-transform: capitalize;
+   border-radius: 10px;
+   border: none;
+   padding: 3px 4px;
+}
+
+
